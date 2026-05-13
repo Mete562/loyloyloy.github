@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #a{
+            background-color: azure;
+            margin: auto;
+            width: 500px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="a">
+    <Canvas id="mycanvas" width="500" height="200" style="border: 1px solid black ;"></Canvas><br><br>
+    <button onclick="geri()">anasayfa</button>
+    </div>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var ctx = canvas.getContext("2d")
+
+        let x =20,y=480; // topun başlangıç yeri x sutün 
+
+        
+        let artim=2,artim2=-2;
+        function draw(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);//ekranı temizler
+
+            ctx.beginPath();
+            ctx.arc(x,85,20,0,Math.PI*2)//Yarıçapı yirmi birim olan daire
+            ctx.arc(y,125,20,0,Math.PI*2)
+
+            ctx.fill();
+            ctx.fillStyle="green";
+            x=x+artim; //x = x+2demek
+            y=y+artim2;
+           if (x+20>500||x-20<0){artim=artim*(-1);artim2=artim2*(-1);}
+            requestAnimationFrame(draw);  
+        }
+        draw();
+        function geri(){
+            window.location.href="index.html"
+        }
+        
+
+    </script>
+</body>
+</html>
